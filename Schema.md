@@ -105,5 +105,5 @@ This document outlines the database schema and ER diagram for a comprehensive re
 
 
 ```markdown
-![ER Diagram](./erdiagram.png)
+![ER Diagram](/erdiagram.png)
 ```
