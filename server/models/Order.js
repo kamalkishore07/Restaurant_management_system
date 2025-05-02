@@ -23,6 +23,7 @@ const OrderSchema = new mongoose.Schema({
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 });
 
-const Order = mongoose.model('Order', OrderSchema);
+// Check if the model already exists before defining it
+const Order = mongoose.models.Order || mongoose.model('Order', OrderSchema);
 
 module.exports = Order;
