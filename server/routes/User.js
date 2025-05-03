@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAllUsers, addUser, signUp, login } = require('../controllers/UserController'); // Import the controller functions
+const { getAllUsers, addUser, signUp, login, forgotPassword, resetPassword, verifyOtp } = require('../controllers/UserController');
 
 // Get all users
 router.get('/', getAllUsers);
@@ -13,5 +13,16 @@ router.post('/signup', signUp);
 
 // User login
 router.post('/login', login);
+
+// Forgot password
+router.post('/forgot-password', forgotPassword);
+
+// Reset password
+router.post('/reset-password', resetPassword);
+
+router.post('/signup', signUp);
+
+// Verify OTP
+router.post('/verify-otp', verifyOtp);
 
 module.exports = router;
