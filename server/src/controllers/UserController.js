@@ -1,4 +1,4 @@
-const User = require('../models/user'); // Import the User model
+const User = require('../models/User'); // Import the User model
 const bcrypt = require('bcrypt'); // For password hashing
 const jwt = require('jsonwebtoken'); // For generating tokens
 const crypto = require('crypto'); // For generating reset tokens
@@ -60,13 +60,13 @@ const signUp = async (req, res) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'your-email@gmail.com', // Replace with your email
-                pass: 'your-email-password', // Replace with your email password
+                user: 'jjebinjose07@gmail.com', // Replace with your email
+                pass: 'xprpxwlkzyoybddf', // Replace with your email password
             },
         });
 
         const mailOptions = {
-            from: 'your-email@gmail.com',
+            from: 'jjebinjose07@gmail.com',
             to: email,
             subject: 'Verify Your Email',
             text: `Your OTP for email verification is: ${otp}`,
@@ -173,10 +173,12 @@ const resetPassword = async (req, res) => {
 
 
 const verifyOtp = async (req, res) => {
+    console.log('Verify OTP route hit'); // Log to confirm the route is hit
     try {
         const { email, otp } = req.body;
+        console.log('Request Body:', req.body); // Log the request body
 
-        // Check if the user details exist in the temporary storage
+        // Check if the user exists in temporary storage
         const tempUser = tempUsers[email];
         if (!tempUser) {
             return res.status(404).json({ message: 'No registration request found for this email.' });
@@ -196,12 +198,13 @@ const verifyOtp = async (req, res) => {
         });
         await newUser.save();
 
-        // Remove the user details from temporary storage
+        // Remove the user from temporary storage
         delete tempUsers[email];
 
         res.status(200).json({ message: 'Email verified successfully. User registered.' });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error('Error in verifyOtp:', error);
+        res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 };
 

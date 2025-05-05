@@ -23,6 +23,9 @@ router.post('/reset-password', resetPassword);
 router.post('/signup', signUp);
 
 // Verify OTP
-router.post('/verify-otp', verifyOtp);
+router.post('/verify-otp', (req, res, next) => {
+    console.log('Verify OTP route hit');
+    next();
+}, verifyOtp);
 
 module.exports = router;
