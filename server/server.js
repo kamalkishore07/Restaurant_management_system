@@ -28,9 +28,10 @@ mongoose
   });
 
 // Routes
-app.use('/auth', require('./routes/User'));
+app.use('/auth', require('./src/routes/User'));
+console.log('Auth routes registered');
 // Start the server
-const PORT = 3000; // Replace with your desired port
+const PORT = 8080; // Replace with your desired port
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
