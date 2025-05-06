@@ -29,6 +29,8 @@ mongoose
 
 // Routes
 app.use('/auth', require('./src/routes/User'));
+app.use('/menuitems', menuItemRoutes);
+
 console.log('Auth routes registered');
 // Start the server
 const PORT = 8080; // Replace with your desired port
